@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import psutil
+from check_connectivity import *
 
 
 def check_disk_usage(disk):
@@ -15,5 +16,7 @@ def check_cpu_usage():
 
 if not check_disk_usage("/") or not check_cpu_usage():
     print("ERROR!!")
-else:
+elif check_connectivity() and check_localhost():
     print("Everything is OK!")
+else:
+    print("Network connection error!!!")
